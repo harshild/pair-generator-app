@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PairGenerator</string>
+    <string name="generate_bt_text">GENERATE</string>
+</resources>
