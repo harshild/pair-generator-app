@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="sdc.vw.com.pairgenerator.MainActivity"
     android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <com.hootsuite.nachos.NachoTextView
+        android:id="@+id/nacho_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:chipSpacing="2dp"
+        app:chipBackground="@color/chip_material_background"
+        app:chipTextColor="@color/chip_default_text_color"
+        app:chipTextSize="16dp"
+        app:chipHeight="30dp"
+        app:chipVerticalSpacing="3dp"/>
 
     <Button
         android:id="@+id/bt_generate"

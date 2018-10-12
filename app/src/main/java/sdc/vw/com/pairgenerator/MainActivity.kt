@@ -5,11 +5,14 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Button
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import java.util.*
+import com.hootsuite.nachos.NachoTextView
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,9 +21,32 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //get the spinner from the xml.
+        val dropdown = findViewById<View>(R.id.spinner1) as Spinner
+        val items = DataProvider().getListOfProjectName()
+        val dropDownAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
+        dropdown.adapter = dropDownAdapter
+        val nameChips: NachoTextView = findViewById(R.id.nacho_text_view)
+
+        dropdown.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+                nameChips.setText(listOf())
+                val suggestions = DataProvider().getListOfMembers(items[position])
+                val adapter = ArrayAdapter(applicationContext, android.R.layout.simple_dropdown_item_1line, suggestions)
+                nameChips.setAdapter(adapter);
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+                // your code here
+            }
+
+        }
+
+
+
         val btGenerate = findViewById<Button>(R.id.bt_generate)
         btGenerate.setOnClickListener { _ ->
-            var list = generatePairs(mutableListOf("Harshil", "Sumit", "Abhinav", "Amey","Ashish","Neelam"))
+            var list = generatePairs(nameChips.chipValues)
             initTable(list)
         }
     }
