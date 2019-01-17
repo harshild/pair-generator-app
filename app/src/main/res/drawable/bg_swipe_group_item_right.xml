@@ -14,23 +14,13 @@
        See the License for the specific language governing permissions and
        limitations under the License.
 -->
-<LinearLayout
-    android:orientation="vertical"
-    android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/generate_bt_text"
-        android:id="@+id/bt_generate"/>
-
-    <RelativeLayout
-        android:id="@+id/layoutForRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
-</LinearLayout>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <color android:color="@color/bg_swipe_group_item_dismiss"/>
+    </item>
+    <item android:left="16dp">
+        <bitmap
+            android:src="@drawable/ic_item_swipe_dismiss"
+            android:gravity="left|center_vertical"/>
+    </item>
+</layer-list>

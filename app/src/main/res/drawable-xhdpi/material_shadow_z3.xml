@@ -14,23 +14,7 @@
        See the License for the specific language governing permissions and
        limitations under the License.
 -->
-<LinearLayout
-    android:orientation="vertical"
-    android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/generate_bt_text"
-        android:id="@+id/bt_generate"/>
-
-    <RelativeLayout
-        android:id="@+id/layoutForRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </RelativeLayout>
-</LinearLayout>
+<nine-patch xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:src="@drawable/material_shadow_z3_xhdpi"
+    tools:ignore="unused" />
