@@ -1,11 +1,28 @@
 package sdc.vw.com.pairgenerator
 
 import android.os.Bundle
-import android.widget.*
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    var exampleDataProviderFragment: ExampleDataProviderFragment = ExampleDataProviderFragment()
+    val draggableGridExampleFragment = DraggableGridExampleFragment()
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, selectedItem: Int, p3: Long) {
+        val projectName = TeamDataProvider().getListOfProjectName().get(selectedItem)
+        getDataProvider().resetList(TeamDataProvider().getListOfMembers(projectName).toMutableList())
+        draggableGridExampleFragment.notifyDataChange()
+    }
+
     private val FRAGMENT_TAG_DATA_PROVIDER = "data provider"
     private val FRAGMENT_LIST_VIEW = "list view"
 
@@ -13,9 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val exampleDataProviderFragment = ExampleDataProviderFragment()
 
-        val draggableGridExampleFragment = DraggableGridExampleFragment()
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                     .add(exampleDataProviderFragment, FRAGMENT_TAG_DATA_PROVIDER)
@@ -25,6 +40,11 @@ class MainActivity : AppCompatActivity() {
                     .commit()
         }
 
+        val teams = TeamDataProvider().getListOfProjectName()
+
+        val dropDown = findViewById<Spinner>(R.id.teamDropdown)
+        dropDown.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, teams)
+        dropDown.onItemSelectedListener = this
 
         val btGenerate = findViewById<Button>(R.id.bt_generate)
         btGenerate.setOnClickListener { _ ->

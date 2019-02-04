@@ -11,11 +11,10 @@ class ExampleDataProviderFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         retainInstance = true  // keep the mDataProvider instance
-        mDataProvider = PairDataProvider()
+        mDataProvider = PairDataProvider(TeamDataProvider().getListOfMembers(TeamDataProvider().getListOfProjectName().get(0)).toMutableList())
     }
 
     fun getDataProvider(): AbstractDataProvider {
         return this.mDataProvider!!
     }
-
 }

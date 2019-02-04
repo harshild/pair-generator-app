@@ -1,16 +1,21 @@
 package sdc.vw.com.pairgenerator
 
-import android.content.res.Resources
 import android.os.Build
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import com.h6ah4i.android.widget.advrecyclerview.swipeable.RecyclerViewSwipeManager
 import java.util.*
 
-class PairDataProvider : AbstractDataProvider{
+class PairDataProvider : AbstractDataProvider {
+    override fun resetList(list: MutableList<String>) {
+        mData.clear()
+        for (i in 0 until list.size)
+            createView(list.get(i))
+    }
+
     override fun getItem(name: String): Data {
-        for(i in 0 until mData.size){
-            if(mData.get(i).text.equals(name))
+        for (i in 0 until mData.size) {
+            if (mData.get(i).text.equals(name))
                 return mData.get(i)
         }
         throw java.lang.IndexOutOfBoundsException("koi na")
@@ -23,20 +28,18 @@ class PairDataProvider : AbstractDataProvider{
     @RequiresApi(Build.VERSION_CODES.N)
     override fun updateList(list: MutableList<ConcreteData>) {
         mData.clear()
-        mData.addAll(0,list)
+        mData.addAll(0, list)
     }
 
     private val mData: MutableList<ConcreteData>
     private var mLastRemovedData: ConcreteData? = null
     private var mLastRemovedPosition = -1
 
-    constructor(){
+    constructor(devList: MutableList<String>) {
         mData = LinkedList<ConcreteData>()
-
-        val name = listOf("Harshil", "Saurabh", "Amit Sharma", "Rolly", "Amit Hule", "Sagar");
-            for (j in 0 until name.size) {
-                createView(name.get(j))
-            }
+        for (j in 0 until devList.size) {
+            createView(devList.get(j))
+        }
     }
 
     private fun createView(text: String) {

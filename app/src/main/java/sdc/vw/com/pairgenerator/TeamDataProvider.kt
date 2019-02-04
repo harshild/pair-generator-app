@@ -1,9 +1,9 @@
 package sdc.vw.com.pairgenerator
 
 
-class DataProvider() {
+class TeamDataProvider() {
 
-    var employeeList: HashMap<String, List<String>>
+    val employeeList: HashMap<String, List<String>>
 
     init {
         employeeList = HashMap()

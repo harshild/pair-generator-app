@@ -31,4 +31,6 @@ abstract class AbstractDataProvider {
     abstract fun getList(): MutableList<PairDataProvider.ConcreteData>
 
     abstract fun updateList(list: MutableList<PairDataProvider.ConcreteData>)
+
+    abstract fun resetList(list: MutableList<String>)
 }
