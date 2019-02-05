@@ -9,9 +9,8 @@ public class HierarchicalViewIdViewer {
     public static View debugViewIds(View view, String logtag) {
         Log.v(logtag, "traversing: " + view.getClass().getSimpleName() + ", id: " + view.getId());
         if (view.getParent() != null && (view.getParent() instanceof ViewGroup)) {
-            return debugViewIds((View)view.getParent(), logtag);
-        }
-        else {
+            return debugViewIds((View) view.getParent(), logtag);
+        } else {
             debugChildViewIds(view, logtag, 0);
             return view;
         }
@@ -19,7 +18,7 @@ public class HierarchicalViewIdViewer {
 
     private static void debugChildViewIds(View view, String logtag, int spaces) {
         if (view instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup)view;
+            ViewGroup group = (ViewGroup) view;
             for (int i = 0; i < group.getChildCount(); i++) {
                 View child = group.getChildAt(i);
                 Log.v(logtag, padString("view: " + child.getClass().getSimpleName() + "(" + child.getId() + ")", spaces));

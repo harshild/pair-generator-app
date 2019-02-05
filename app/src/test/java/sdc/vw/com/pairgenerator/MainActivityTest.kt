@@ -20,17 +20,17 @@ class MainActivityTest() {
         assertEquals(2, actualList.size)
         val flatMap = actualList.flatMap { item -> listOf(item.first, item.second) }
 
-        for(item in actualList)
+        for (item in actualList)
             assertFalse(item.first == item.second)
 
-        assertEquals(inputList.size,flatMap.size)
+        assertEquals(inputList.size, flatMap.size)
         assertTrue(inputList.containsAll(flatMap))
     }
 
     @Test
     fun generatePair_itShouldGenerateRandomPairs_oddPeople() {
 
-        var inputList = mutableListOf("A", "B", "C", "D","E")
+        var inputList = mutableListOf("A", "B", "C", "D", "E")
 
         var actualList = mainActivity.generatePairs(inputList)
 
@@ -38,10 +38,10 @@ class MainActivityTest() {
         assertEquals(3, actualList.size)
         val flatMap = actualList.flatMap { item -> listOf(item.first, item.second) }
 
-        for(item in actualList)
+        for (item in actualList)
             assertFalse(item.first == item.second)
 
-        assertEquals(inputList.size+1,flatMap.size)
+        assertEquals(inputList.size + 1, flatMap.size)
         assertTrue(flatMap.containsAll(inputList))
         assertTrue(flatMap.contains("No Pair"))
     }

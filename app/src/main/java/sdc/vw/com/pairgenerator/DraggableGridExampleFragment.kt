@@ -4,8 +4,6 @@ import android.graphics.drawable.NinePatchDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import androidx.annotation.NonNull
-import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -28,7 +26,7 @@ class DraggableGridExampleFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    fun notifyDataChange(){
+    fun notifyDataChange() {
         mAdapter?.notifyDataSetChanged()
         mWrappedAdapter?.notifyDataSetChanged()
     }

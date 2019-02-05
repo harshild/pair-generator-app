@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="96dp"
     android:background="#5a5689"
@@ -13,6 +12,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="FOOTER"
-        android:textColor="#fff"/>
+        android:textColor="#fff" />
 
 </FrameLayout>

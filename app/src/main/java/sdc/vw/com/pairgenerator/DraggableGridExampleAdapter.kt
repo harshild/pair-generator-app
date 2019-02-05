@@ -1,7 +1,5 @@
 package sdc.vw.com.pairgenerator
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +12,7 @@ import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemAdapter
 import com.h6ah4i.android.widget.advrecyclerview.draggable.ItemDraggableRange
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableItemViewHolder
-import java.util.ArrayList
+import java.util.*
 
 internal class DraggableGridExampleAdapter(private val mProvider: AbstractDataProvider) : RecyclerView.Adapter<DraggableGridExampleAdapter.MyViewHolder>(), DraggableItemAdapter<DraggableGridExampleAdapter.MyViewHolder> {
     private var mItemMoveMode = RecyclerViewDragDropManager.ITEM_MOVE_MODE_SWAP
@@ -28,7 +26,7 @@ internal class DraggableGridExampleAdapter(private val mProvider: AbstractDataPr
         var mAnchorTextView: TextView
         var isPinned: Boolean = false
 
-        constructor(v : View): super(v){
+        constructor(v: View) : super(v) {
             mContainer = v.findViewById(R.id.container)
             mTextView = v.findViewById(android.R.id.text1)
             mAnchorTextView = v.findViewById(R.id.anchorText)
@@ -75,7 +73,7 @@ internal class DraggableGridExampleAdapter(private val mProvider: AbstractDataPr
         val inflater = LayoutInflater.from(parent.context)
         val v = inflater.inflate(R.layout.list_grid_item, parent, false)
 
-        return  MyViewHolder(v)
+        return MyViewHolder(v)
     }
 
     override fun onBindViewHolder(@NonNull holder: MyViewHolder, position: Int) {
@@ -112,7 +110,6 @@ internal class DraggableGridExampleAdapter(private val mProvider: AbstractDataPr
     override fun onMoveItem(fromPosition: Int, toPosition: Int) {
 
 
-
         if (!mProvider.getItem(toPosition).isPinned) {
             Log.d(TAG, "onMoveItem1(fromPosition = $fromPosition, toPosition = $toPosition)")
             mProvider.swapItem(fromPosition, toPosition)
@@ -121,7 +118,7 @@ internal class DraggableGridExampleAdapter(private val mProvider: AbstractDataPr
 
     override fun onCheckCanStartDrag(@NonNull holder: MyViewHolder, position: Int, x: Int, y: Int): Boolean {
         Log.d(TAG, "onCheckCanDrag(position = $position, x = $x y = $y")
-        Log.d(TAG, "==="+mProvider.getItem(position).isPinned)
+        Log.d(TAG, "===" + mProvider.getItem(position).isPinned)
 
         return !mProvider.getItem(position).isPinned
     }

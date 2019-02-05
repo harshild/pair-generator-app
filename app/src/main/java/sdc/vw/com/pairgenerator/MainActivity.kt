@@ -56,29 +56,29 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun generatePairs(inputList: MutableList<PairDataProvider.ConcreteData>): MutableList<PairDataProvider.ConcreteData> {
-        var pinnedIndies : MutableList<Int> = mutableListOf()
+        var pinnedIndies: MutableList<Int> = mutableListOf()
         var processedElements: MutableList<Int> = mutableListOf()
         var finalList: MutableList<PairDataProvider.ConcreteData> = mutableListOf()
-        for(i in 0 until inputList.size){
-            if(inputList.get(i).isPinned){
+        for (i in 0 until inputList.size) {
+            if (inputList.get(i).isPinned) {
                 pinnedIndies.add(i)
             }
         }
 
-        processedElements.addAll(0,pinnedIndies)
+        processedElements.addAll(0, pinnedIndies)
 
         for (i in 0 until inputList.size) {
-            var randomIndex:Int
-            var element:PairDataProvider.ConcreteData
-            if(pinnedIndies.size > 0 && pinnedIndies.contains(i)){
+            var randomIndex: Int
+            var element: PairDataProvider.ConcreteData
+            if (pinnedIndies.size > 0 && pinnedIndies.contains(i)) {
                 randomIndex = i
-            }else {
+            } else {
                 randomIndex = generateRandomIndex(0, inputList.size - 1, processedElements)
                 processedElements.add(randomIndex)
             }
 
             element = inputList.get(randomIndex)
-            finalList.add(i,element)
+            finalList.add(i, element)
         }
 
         return finalList
