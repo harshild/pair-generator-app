@@ -1,4 +1,4 @@
-package sdc.vw.com.pairgenerator
+package com.pairgenerator
 
 import android.os.Build
 import androidx.annotation.NonNull

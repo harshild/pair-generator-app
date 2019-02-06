@@ -1,4 +1,4 @@
-package sdc.vw.com.pairgenerator
+package com.pairgenerator
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

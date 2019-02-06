@@ -1,4 +1,4 @@
-package sdc.vw.com.pairgenerator
+package com.pairgenerator
 
 abstract class AbstractDataProvider {
 

@@ -1,4 +1,4 @@
-package sdc.vw.com.pairgenerator
+package com.pairgenerator
 
 import android.graphics.drawable.NinePatchDrawable
 import android.os.Build
