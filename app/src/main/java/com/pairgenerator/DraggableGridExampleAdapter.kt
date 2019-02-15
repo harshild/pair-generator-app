@@ -16,15 +16,11 @@ import java.util.*
 
 internal class DraggableGridExampleAdapter(private val mProvider: AbstractDataProvider) : RecyclerView.Adapter<DraggableGridExampleAdapter.MyViewHolder>(), DraggableItemAdapter<DraggableGridExampleAdapter.MyViewHolder> {
     private var mItemMoveMode = RecyclerViewDragDropManager.ITEM_MOVE_MODE_SWAP
-    var isPinned: Boolean = false
-    var viewHolder: MyViewHolder? = null
-    var pinnedItems: MutableList<Int> = ArrayList()
 
     inner class MyViewHolder : AbstractDraggableItemViewHolder {
         var mContainer: FrameLayout
         var mTextView: TextView
         var mAnchorTextView: TextView
-        var isPinned: Boolean = false
 
         constructor(v: View) : super(v) {
             mContainer = v.findViewById(R.id.container)
@@ -80,6 +76,14 @@ internal class DraggableGridExampleAdapter(private val mProvider: AbstractDataPr
         val item = mProvider.getItem(position)
 
         // set text
+        if (item != null && item.isPinned) {
+            holder.mAnchorTextView.setText("Anchor")
+            holder.mContainer.setBackgroundColor(holder.itemView.resources.getColor(R.color.bg_swipe_item_pinned))
+        } else {
+            holder.mAnchorTextView.setText("")
+            holder.mContainer.setBackgroundColor(holder.itemView.resources.getColor(R.color.bg_item_normal_state))
+        }
+
         holder.mTextView.setText(item.text)
 
         // set background resource (target view ID: container)
